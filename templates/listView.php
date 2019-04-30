@@ -11,8 +11,8 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
                 <th scope="col">Last</th>
+                <th scope="col">First</th>
                 <th scope="col">Operations</th>
             </tr>
         </thead>
@@ -20,15 +20,36 @@
             <?php foreach ($users as $index=>$user): ?>
                 <tr>
                     <th scope="row"><?= $index + 1 ?></th>
-                    <td><?= utf8_encode($user['nom']) ?></td>
-                    <td><?= utf8_encode($user['prenom']) ?></td>
-                    <td><a href="index.php/delete?id=<?= $user['id'] ?>" class="btn btn-danger deleteUserButton">Delete</a></td>
+                    <td>
+                        <a href="index.php/user?id=<?= $user['id'] ?>"><?= utf8_encode($user['nom']) ?></a>
+                    </td>
+                    <td>
+                        <a href="index.php/user?id=<?= $user['id'] ?>"><?= utf8_encode($user['prenom']) ?></a>
+                    </td>
+                    <td>
+                        <a href="index.php/delete?id=<?= $user['id'] ?>" class="btn btn-danger deleteUserButton">Delete</a>
+
+                        <a href="index.php/update?id=<?= $user['id'] ?>" class="btn btn-info updateUserButton">Update</a>
+                    </td>
                 </tr>
             <?php endforeach ?>
+                <tr class="bg-secondary">
+                    <th scope="row">#</th>
+                    <td>
+                        <input type="text" class="form-control d-none" id="lastName" placeholder="Last name">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control d-none" id="firstName" placeholder="First name">
+                    </td>
+                    <td>
+                        <button class="btn btn-info addUserButton">Ajouter</button>
+                        <a href="#" class="btn btn-info d-none" id="addUser">Valider</a>
+                    </td>
+                </tr>
         </tbody>
     </table>
 
     <?php include_once 'templates/footer.php' ?>
-    <!--<script src='scripts/deleteUser.js'></script>-->
+    <script src='scripts/user.js'></script>
 </body>
 </html>

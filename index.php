@@ -5,6 +5,12 @@
 
     require_once 'urlUtil.php';
     require_once 'userController.php';
+    require_once 'vendor/autoload.php';
+    use Monolog\Logger;
+    use Monolog\Handler\StreamHandler;
+
+    $logger = new Logger('user-creation');
+    $logger->pushHandler(new StreamHandler(__DIR__.'/my_app.log', Logger::DEBUG));
 
     $uri = curPageURI();
     //testUrl();
@@ -24,7 +30,14 @@
             }
             break;
         case '/firstphp/index.php/create':
-            renderCreatedUser();
+            if (isset($_GET['lastname']) && isset($_GET['firstname'])) {
+                renderCreatedUser($_GET['lastname'], $_GET['firstname']);
+                $userCreated = array($_GET['lastname'], $_GET['firstname']);
+                $logger->info('Adding a new user', $userCreated);
+            }
+            else {
+                renderErrorPage();
+            }
             break;
         case '/firstphp/index.php/update':
             if (isset($_GET['id']) && isset($_GET['lastname']) && isset($_GET['firstname'])) {
@@ -46,10 +59,9 @@
             renderErrorPage();
     }
 
-
     function renderErrorPage() {
         header('HTTP/1.1 404 Not Found');
-        echo '<html><body><h1>404 Oh No!!! Page Not Found :\'(</h1></body></html>';
+        require 'templates/error.php';
     }
 
     function testUrl() {
