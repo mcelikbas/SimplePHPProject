@@ -22,28 +22,30 @@
                     <th scope="row"><?= $index + 1 ?></th>
                     <td>
                         <a href="index.php/user?id=<?= $user['id'] ?>"><?= utf8_encode($user['nom']) ?></a>
+                        <input type="text" class="form-control d-none" id="lastName" placeholder="Last name" value="<?= utf8_encode($user['nom']) ?>">
                     </td>
                     <td>
                         <a href="index.php/user?id=<?= $user['id'] ?>"><?= utf8_encode($user['prenom']) ?></a>
+                        <input type="text" class="form-control d-none" id="firstName" placeholder="First name" value="<?= utf8_encode($user['prenom']) ?>">
                     </td>
                     <td>
-                        <a href="index.php/delete?id=<?= $user['id'] ?>" class="btn btn-danger deleteUserButton">Delete</a>
-
-                        <a href="index.php/update?id=<?= $user['id'] ?>" class="btn btn-info updateUserButton">Update</a>
+                        <a href="index.php/delete?id=<?= $user['id'] ?>" class="btn btn-danger deleteUserRow">Delete</a>
+                        <button class="btn btn-info updateUserButton updateUserRow">Update</button>
+                        <a href="index.php/update?id=<?= $user['id'] ?>" class="btn btn-info updateUserRow updateUser d-none">Apply</a>
                     </td>
                 </tr>
             <?php endforeach ?>
                 <tr class="bg-secondary">
                     <th scope="row">#</th>
                     <td>
-                        <input type="text" class="form-control d-none" id="lastName" placeholder="Last name">
+                        <input type="text" class="form-control d-none" id="new_lastName" placeholder="Last name">
                     </td>
                     <td>
-                        <input type="text" class="form-control d-none" id="firstName" placeholder="First name">
+                        <input type="text" class="form-control d-none" id="new_firstName" placeholder="First name">
                     </td>
                     <td>
-                        <button class="btn btn-info addUserButton">Ajouter</button>
-                        <a href="#" class="btn btn-info d-none" id="addUser">Valider</a>
+                        <button class="btn btn-info addUserButton">Add</button>
+                        <a href="#" class="btn btn-info d-none" id="addUser">Apply</a>
                     </td>
                 </tr>
         </tbody>
