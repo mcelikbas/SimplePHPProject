@@ -18,8 +18,6 @@ $(function() {
         $("#addUser").removeClass("d-none");
         $("#new_lastName").removeClass("d-none");
         $("#new_firstName").removeClass("d-none");
-        $("#lastName").focus();
-        
     });
 
     $("#addUser").click(function() {
@@ -40,7 +38,6 @@ $(function() {
         $(this).parent().parent().find("input").removeClass("d-none");
         $(this).parent().parent().find("a").addClass("d-none");
         $(this).parent().find(".updateUser").removeClass("d-none");
-        //$("#lastName").focus();
     });
 
     $(".updateUser").click(function() {

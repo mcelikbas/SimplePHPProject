@@ -22,7 +22,7 @@
                     <th scope="row"><?= $index + 1 ?></th>
                     <td>
                         <a href="index.php/user?id=<?= $user['id'] ?>"><?= utf8_encode($user['nom']) ?></a>
-                        <input type="text" class="form-control d-none" id="lastName" placeholder="Last name" value="<?= utf8_encode($user['nom']) ?>">
+                        <input type="text" class="form-control d-none" id="lastName" placeholder="Last name" value="<?= utf8_encode($user['nom']) ?>" autofocus>
                     </td>
                     <td>
                         <a href="index.php/user?id=<?= $user['id'] ?>"><?= utf8_encode($user['prenom']) ?></a>
@@ -38,7 +38,7 @@
                 <tr class="bg-secondary">
                     <th scope="row">#</th>
                     <td>
-                        <input type="text" class="form-control d-none" id="new_lastName" placeholder="Last name">
+                        <input type="text" class="form-control d-none" id="new_lastName" placeholder="Last name" autofocus>
                     </td>
                     <td>
                         <input type="text" class="form-control d-none" id="new_firstName" placeholder="First name">
